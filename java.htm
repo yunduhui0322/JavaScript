@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Arpil.28 복습</title>
+    <script>
+        function loginValue(){
+           var strID = document.getElementById("user_id").value;
+           var strPW = window.document.getElementById("user_pw")
+            lenID = strID.length
+            lenPW = strPW.length
+            if (lenID < 6 || lenID >10){
+                window.alert("6~10자로 입력하세요");
+            }
+                else {
+                    (lenPW >10 || lenPW <8)
+                    window.alert("8~10자로 입력하세요");
+                }
+                
+            
+        
+        
+        
+        }
+    </script>
+    </head>
+    <body>
+        <form name="fnUser">
+            <table border="1">
+                <tr>
+                    <td colspan="2">
+                        <div><h3>로그인</h3></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        아이디
+                    </td>
+                    <td>
+                        <input type="text" name="txID" id="user_id">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        비밀번호
+                    </td>
+                    <td>
+                        <input type="password" name="txPW" id="user_pw">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" name="resultLogin" id="r_Login" value="확인"
+                        onclick="loginValue();">
+                        <input type="reset" name="resetLogin" id="re_Login" value="취소">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
