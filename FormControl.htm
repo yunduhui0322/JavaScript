@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            과제
+        </title>
+        <script>
+            var text = "";
+            var shc = "";
+            var coun = "";
+            function loginTool(){
+                var userName = document.getElementById("user_name");
+                var userID = document.getElementById("user_ID");
+                var userPW = document.getElementById("user_PW");
+                var userCPW = document.getElementById("Check_PW");
+                var result = document.getElementById("resultValue");
+                var userGender = document.getElementsByName("user_gender");
+                
+                var u_gender = "";
+                for(i=0; i<userGender.length; i++){
+                    if(userGender[i].checked){
+                       u_gender = userGender[i].value ;
+                    }
+                }
+                    
+                
+                if(userName.value ==""){
+                    window.alert("이름을 입력해 주세요");
+                    userName.focus();
+                }
+                else if(!isNaN(userName.value)){
+                    window.alert("문자를 입력해주세요");
+                    userName.focus();
+                    userName.value = "";
+                }
+                else if(userName.value.length >7){
+                    window.alert("이름을 6자로 입력하세요");
+                }
+                else if(userID.value ==""){
+                    window.alert("ID를 입력해주세요");
+                    userID.focus();
+                }
+                else if(!isNaN(userID.value)){
+                    window.alert("ID는 문자로 입력해주세요");
+                    userID.value = "";
+                    userID.focus();
+                }
+                else if(userID.value.length>8 || userID.value.length<6){
+                    window.alert("ID는 6~8자로 입력하세요")
+                    userID.focus();
+                    userID.value="";                
+                }
+                else if(userPW.value ==""){
+                    window.alert("비밀번호를 입력하세요")
+                    userPW.focus();
+                }
+                else if(userPW.value.length <10){
+                    window.alert("비밀번호는 10자리 이상 입력하세요");
+                    userPW.focus();
+                    userPW.value="";
+                }
+                else if(userPW.value != userCPW.value){
+                    window.alert("비밀번호가 다릅니다");
+                    userCPW.focus();
+                    userCPW.value = "";
+                }
+                else{
+                    text = "이름: " + userName.value + "\n";
+                    text += "ID: " + userID.value + "\n";
+                    text += "PW: " + userPW.value + "\n";
+                    text += "학력: " + shc; 
+                    text += "성별: " + u_gender + "\n";
+                    text += "국적: " + coun + "\n"
+
+                    document.getElementById("resultValue").value = text;
+                   
+                }
+         }
+             
+            function userSchool(obj){
+                if(obj.checked){
+                    shc= obj.value + "\n";
+                }
+                else{
+                    alert("학교를 선택해 주세요")
+                    shc= "" + "\n";
+                }
+            }
+            function userCoutnry(){
+                var userSel = document.getElementById("user_sel");
+                var intCount = userSel.selectedIndex;
+                var selCountry = userSel.options[intCount];
+                if(intCount==0){
+                    alert("국적을 선택하세요")
+                }
+                else{
+                   coun = selCountry.text ;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div align="center"><h3>로그인 페이지</h3></div>
+        <div id ="divPrint">
+        <form>
+            <table align="center" border="1">
+                <tr>
+                    <td align="center">이름</td>
+                    <td><input type="text" id="user_name"></td>
+                </tr>
+                <tr>
+                    <td align="center">ID</td>
+                    <td><input type="text" id="user_ID"></td>
+                </tr>
+                <tr>
+                    <td align="center">Password</td>
+                    <td><input type="password" id="user_PW"></td>
+                </tr>
+                <tr>
+                    <td align="center">Password<br>확인</td>
+                    <td><input type="password" id="Check_PW"></td>
+                </tr>
+                <tr>
+                    <td align="center">학력</td>
+                    <td>
+                        <input type="checkbox" value="highschool" onclick="userSchool(this)">고등학교<br>
+                        <input type="checkbox" value="College" onclick="userSchool(this)">대학교(2년/3년)<br>
+                        <input type="checkbox" value="University" onclick="userSchool(this)">대학교(4년/6년)                    
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">성별</td>
+                    <td>
+                        <input type="radio" value="male" name="user_gender">남자
+                        <input type="radio" value="female" name="user_gender">여자
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">국적</td>
+                    <td>
+                        <select id="user_sel" onchange="userCoutnry()">
+                            <option value="0">국적을 선택하세요</option>
+                            <option value="1">일본</option>
+                            <option value="2">중국</option>
+                            <option value="3">미국</option>
+                            <option value="4">대한민국</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="button" value="출력" onclick="loginTool()">
+                    </td>
+                </tr>
+                <tr>
+                    <td>출력값</td>
+                    <td align="center">
+                        <textarea align="center" id="resultValue" cols="30" rows="10">
+
+                        </textarea>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    </body>
+</html>
